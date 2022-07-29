@@ -16,35 +16,24 @@ const int P1=1000000007;
 
 
 void testcases() {
-    lli n,total=0;
+    int n,mid;
     vector<int>va;
     cin>>n;
-    for(int i=0; i<n; i++) {
-        lli x;
-        cin>>x;
-        total+=x;
-        va.PB(x);
-    }
+    vin(va,n);
+    mid=ceil(pow(2,n));
 
-    lli a=0,b=0;
-    sort(va.begin(), va.end());
-    a=va[n-1];
-    for(int i=n-2; i>=0; ) {
-        if(b<=a){
-            while (b<=a&&i>=0){
-                b+=va[i];
-                i--;
-            }
-        }else {
-            while (a<=b&&i>=0){
-                a+=va[i];
-                i--;
-            }
+    lli ans=P1;
+    for(int i=0; i<mid; i++) {
+        lli a=0,b=0;
+        for(int j=0; j<n; j++) {
+            if(i&(1<<(j)))  a+=va[j];
+            else            b+=va[j];
         }
-        cout<<i<<'\t'<<a<<'\t'<<b<<endl;
+        //cout<<a<<'\t'<<b<<endl;
+        lli diff=abs(a-b);
+        ans=min(ans,diff);
     }
-    //cout<<a<<'\t'<<b<<endl;
-    cout<<abs(a-b)<<endl;
+    cout<<ans<<endl;
 }
 
 int main() {
