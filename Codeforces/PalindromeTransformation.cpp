@@ -16,21 +16,34 @@ const int P1=1000000007;
 
 
 void testcases() {
-    int n,p,mid,l,r;
+    int n,p,mid,l,r,ans=0;
     string s;
     cin>>n>>p>>s;
+    n--,p--;
     mid=n/2;
-    l=0,r=mid;
-    if(p>mid)   p=n-p+1;
+    if(p>mid)   p=n-p;
+    l=-1;
 
-    for(int i=p-1; i>=0; i--){
-        if(s[i]!=s[n-i+1])  l=i;
-    }
-    for(int i=mid; i>=p; i--){
-        if(s[i]!=s[n-i+1])  r=i;
+    for(int i=0; i<=n/2; i++) {
+        if(s[i]!=s[n-i]) {
+            int diff=abs(s[i]-s[n-i]);
+            diff=min(diff,26-diff);
+            ans+=diff;
+            if(l==-1)   l=i;
+            r=i;
+        }
     }
 
-    
+    if(ans==0) {
+        cout<<ans<<endl;
+        return;
+    }
+    if(p<=l)    ans+=(r-p);
+    else if(p>l && p<r) {
+        if(p-l<=r-p)    ans+=(p+r-2*l);
+        else            ans+=(2*r-p-l);
+    }else if(p>=r)      ans+=(p-l);
+    cout<<ans<<endl;
 }
 
 int main() {
