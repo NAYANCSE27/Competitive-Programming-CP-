@@ -16,51 +16,14 @@ const int P1=1000000007;
 
 
 void testcases() {
-    string s,t,st,tt;
-    int l1,l2;
-    cin>>s>>t;
-    l1=s.size();
-    l2=t.size();
-    st=s;
-    tt=t;
 
-    bool f=true,ff=true;
-    for(int i=0; i<l1; i++) {
-        if(s[i]==t[0]||s[i]=='?') {
-            for(int j=0; j<l2; j++) {
-                if((i+j)<l1 && s[i+j]=='?')     s[i+j]=t[j];
-                else if((i+j)<l1 && s[i+j]!=t[j]){
-                    f=false;
-                    break;
-                }
-            }
-        }else   f=false;
-
-        if(f)   break;
-        else{
-            s.clear();
-            s=st;
-            f=true;
-        }
-    }
-
-    //cout<<s<<'\t'<<tt<<endl;
-    //cout<<ff<<endl;
-    
-    if(s.find(tt)>l1)   cout<<"UNRESTORABLE"<<endl;
-    else {
-        for(int i=0; i<l1; i++) {
-            if(s[i]=='?')   s[i]='a';
-        }
-        cout<<s<<endl;
-    }
 }
 
 int main() {
 
     fast;
     int tc=1;
-    //cin>>tc;
+    cin>>tc;
     while(tc--)
         testcases();
 
