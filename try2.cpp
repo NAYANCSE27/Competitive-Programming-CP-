@@ -16,38 +16,7 @@ const int P1=1000000007;
 
 
 void testcases() {
-    int ara[111],n,x,y,m;
-    vector<int>va;
-    cin>>n>>x>>y;
-    vin(va,n);
-    sort(va.begin(), va.end());
-    memset(ara,0,sizeof(ara));
 
-    m=x*y;
-    for(int i=0; i<n; i++) {
-        ara[va[i]]=1;
-        int mm=m,j=va[i];
-        while(mm>=0&&j>0) {
-            ara[j]=1;
-            j--;
-            mm--;
-        }
-        mm=m,j=va[i];
-        while(mm>=0&&j<=100) {
-            ara[j]=1;
-            j++;
-            mm--;
-        }
-    }
-
-//    for(int i=1;i<=100; i++)
-//        cout<<ara[i]<<' ';
-//    cout<<endl;
-
-    int ctn=0;
-    for(int i=1; i<=100; i++)
-        if(ara[i]==0)   ctn++;
-    cout<<ctn<<endl;
 }
 
 int main() {
