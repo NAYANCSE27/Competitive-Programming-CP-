@@ -14,21 +14,23 @@ using namespace std;
 const int N=2e5+6;
 const int P1=1000000007;
 
-
 void testcases() {
-    lli n,l,r;
+    int n;
+    vector<int>va,vb;
     cin>>n;
-    l=1,r=n;
-    while(l<=r) {
-        lli mid=(l+r)/2;
-        lli x=(mid*(mid+1))/2;
-        if(x==n) {
-            cout<<mid<<endl;
+    vin(va,n);
+    vb.PB(va[0]);
+
+    for(int i=1; i<n; i++) {
+        if(va[i]>0&&vb[i-1]>=va[i]) {
+            cout<<-1<<endl;
             return;
-        }else if(x>n)   r=mid-1;
-        else            l=mid+1;
+        }
+        vb.PB(vb[i-1]+va[i]);
     }
-    cout<<l-1<<endl;
+
+    for(int i=0; i<n; i++)  cout<<vb[i]<<' ';
+    cout<<endl;
 }
 
 int main() {

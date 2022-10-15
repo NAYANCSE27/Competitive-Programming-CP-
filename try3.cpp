@@ -14,49 +14,31 @@ using namespace std;
 const int N=2e5+6;
 const int P1=1000000007;
 
-int len(int x) {
-    int ctn=0;
-    while(x) {
-        ctn++;
-        x/=10;
-    }
-    return ctn;
-}
 
 void testcases() {
-    int n;
-    priority_queue<int>pa,pb;
-    cin>>n;
-    for(int i=0; i<n; i++) {
-        int x;
-        cin>>x;
-        pa.push(x);
-    }
-    for(int i=0; i<n; i++) {
-        int x;
-        cin>>x;
-        pb.push(x);
+    lli a,b,aa=0,bb=0,ctn=0,mid=0;
+    cin>>a>>b;
+    aa=sqrt(a);
+    bb=sqrt(b);
+
+    if(a==b) {
+        if(a%aa==0)    cout<<1<<endl;
+        else           cout<<0<<endl;
+        return;
     }
 
-    int ans=0;
-    while(!pa.empty()) {
-        int x=pa.top();
-        int y=pb.top();
+    if((a%(aa*aa))<aa)               ctn=3*(aa-1)+1;
+    else if((a%(aa*aa))<2*aa)        ctn=3*(aa-1)+2;
+    else if((a%(aa*aa))==2*aa)       ctn=3*(aa-1)+3;
+    else                             ctn=3*(aa-1)+3;
 
-        if(x>y) {
-            pa.pop();
-            pa.push(len(x));
-            ans++;
-        }else if(x<y) {
-            pb.pop();
-            pb.push(len(y));
-            ans++;
-        }else {
-            pa.pop();
-            pb.pop();
-        }
-    }
-    cout<<ans<<endl;
+    if((b%(bb*bb))<bb)               mid=3*(bb-1)+1;
+    else if((b%(bb*bb))<2*bb)        mid=3*(bb-1)+2;
+    else if((b%(bb*bb))==2*bb)       mid=3*(bb-1)+3;
+    else                             mid=3*(bb-1)+3;
+
+    //cout<<ctn<<'\t'<<mid<<endl;
+    cout<<mid-ctn+1<<endl;
 }
 
 int main() {
