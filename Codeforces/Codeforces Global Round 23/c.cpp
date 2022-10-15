@@ -82,5 +82,6 @@ int main() {
 Bitmask/Prefix Sum/Binary Exponentiation/DFS/BFS
 /Binary Search/Recursion/GCD/LCM/Divisors/Knapsack/LCS
 
+CF Global Round 23 some solution added
 
 */
