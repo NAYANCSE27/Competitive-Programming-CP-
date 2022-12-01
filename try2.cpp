@@ -16,7 +16,27 @@ const int P1=1000000007;
 
 
 void testcases() {
+    int n,m;
+    cin>>n>>m;
+    vector<int>va(n);
 
+    if(n%m!=0) {
+        cout<<-1<<endl;
+        return;
+    }
+
+    iota(va.begin(), va.end(), 1);
+    va[0]=m;
+    va[n-1]=1;
+    for(int i=2*m; i<=n; i+=m) {
+        if(n%i==0) {
+            va[m-1]=i;
+            m=i;
+        }
+    }
+
+    for(int i=0; i<n; i++)  cout<<va[i]<<' ';
+    cout<<endl;
 }
 
 int main() {
