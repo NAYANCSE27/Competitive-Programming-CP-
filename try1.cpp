@@ -14,30 +14,29 @@ using namespace std;
 const int N=2e5+6;
 const int P1=1000000007;
 
+void rec(string &s, int i, int j) {
+    //cout<<s<<'\t'<<i<<'\t'<<j<<endl;
+    if(i<j) {
+        swap(s[i],s[j]);
+        i++,j--;
+        rec(s,i,j);
+    }
+}
+
 void testcases() {
     int n;
-    vector<int>va,vb;
-    cin>>n;
-    vin(va,n);
-    vb.PB(va[0]);
-
-    for(int i=1; i<n; i++) {
-        if(va[i]>0&&vb[i-1]>=va[i]) {
-            cout<<-1<<endl;
-            return;
-        }
-        vb.PB(vb[i-1]+va[i]);
-    }
-
-    for(int i=0; i<n; i++)  cout<<vb[i]<<' ';
-    cout<<endl;
+    string s;
+    cin>>s;
+    n=s.size();
+    rec(s,0,n-1);
+    cout<<s<<endl;
 }
 
 int main() {
 
     fast;
     int tc=1;
-    cin>>tc;
+    //cin>>tc;
     while(tc--)
         testcases();
 
