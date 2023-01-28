@@ -14,29 +14,31 @@ using namespace std;
 const int N=2e5+6;
 const int P1=1000000007;
 
-void rec(string &s, int i, int j) {
-    //cout<<s<<'\t'<<i<<'\t'<<j<<endl;
-    if(i<j) {
-        swap(s[i],s[j]);
-        i++,j--;
-        rec(s,i,j);
-    }
-}
+struct node{
+    int data;
+    node *next;
+};
 
 void testcases() {
+    node *head;
     int n;
-    string s;
-    cin>>s;
-    n=s.size();
-    rec(s,0,n-1);
-    cout<<s<<endl;
+    cout<<"Number of input: ";
+    cin>>n;
+
+    while(n--) {
+        int x;
+        cin>>x;
+        node *mid=new node();
+        mid->data=x;
+        mid->next=*node;
+    }
 }
 
 int main() {
 
     fast;
     int tc=1;
-    //cin>>tc;
+    cin>>tc;
     while(tc--)
         testcases();
 
